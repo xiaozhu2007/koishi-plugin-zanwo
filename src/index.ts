@@ -3,7 +3,7 @@ import { Context, h, Schema } from 'koishi'
 export const name = 'zanwo'
 
 export const usage = `
-**<center>本插件开箱即用</center>**
+**<center>本插件支持开箱即用</center>**
 
 常见的失败原因：用户禁止陌生人赞我、今日点赞已达上限次数或与服务器通讯出错
 
