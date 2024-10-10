@@ -2,7 +2,7 @@ commands:
   zanwo:
     description: 赞我
     usage: |-
-      直接输入即可触发赞我
+      直接输入即可触发点赞
     examples: |-
       zanwo
     messages:

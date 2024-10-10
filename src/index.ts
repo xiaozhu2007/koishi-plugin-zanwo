@@ -24,11 +24,11 @@ export function apply(ctx: Context) {
       for (let i = 0; i < 5; i++) {
         await session.bot.internal.sendLike(session.userId, 10);
       }
-      return session.send(h('quote', { id: session.messageId }) + session.text('.success'));
+      return session.text('.success');
     }
     catch (_e) {
-      if (num > 0) return session.send(h('quote', { id: session.messageId }) + session.text('.success'));
-      return session.send(h('quote', { id: session.messageId }) + session.text('.failure'));
+      if (num > 0) return session.text('.success');
+      return session.text('.failure');
     }
   });
 }
