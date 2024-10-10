@@ -23,6 +23,7 @@ export function apply(ctx: Context) {
     try {
       for (let i = 0; i < 5; i++) {
         await session.bot.internal.sendLike(session.userId, 10);
+        num += 1
       }
       return session.text('.success');
     }
