@@ -1,0 +1,10 @@
+commands:
+  zanwo:
+    description: 赞我
+    usage: |-
+      直接输入即可触发赞我
+    examples: |-
+      zanwo
+    messages:
+      success: 已完成名片赞操作，记得回哦
+      failure: 点赞失败

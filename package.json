@@ -1,21 +1,28 @@
 {
   "name": "koishi-plugin-zanwo",
-  "description": "onebot 平台赞我插件",
-  "version": "0.0.1",
+  "description": "QQ 名片赞点赞插件",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "lib",
     "dist"
   ],
+  "contributors": [
+    "WolfYangFan <admin@993686.xyz>"
+  ],
   "license": "MIT",
-  "scripts": {},
   "keywords": [
     "chatbot",
     "koishi",
-    "plugin"
+    "plugin",
+    "zanwo",
+    "like-me"
   ],
-  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaozhu2007/koishi-plugin-zanwo.git"
+  },
   "peerDependencies": {
     "koishi": "^4.18.0"
   }
