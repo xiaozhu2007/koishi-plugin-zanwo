@@ -1,3 +1,5 @@
+![koishi-plugin-zanwo](https://socialify.git.ci/xiaozhu2007/koishi-plugin-zanwo/image?description=1&forks=1&issues=1&language=1&name=1&owner=1&pattern=Signal&pulls=1&stargazers=1&theme=Auto)
+
 # koishi-plugin-zanwo
 
 [![npm](https://img.shields.io/npm/v/koishi-plugin-zanwo?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-zanwo)
