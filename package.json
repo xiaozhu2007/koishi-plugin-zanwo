@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-zanwo",
   "description": "QQ 名片赞点赞插件",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -9,7 +9,8 @@
     "dist"
   ],
   "contributors": [
-    "WolfYangFan <admin@993686.xyz>"
+    "WolfYangFan <admin@993686.xyz>",
+    "Mxmilu666"
   ],
   "license": "MIT",
   "keywords": [
@@ -19,6 +20,10 @@
     "zanwo",
     "like-me"
   ],
+  "author": {
+    "name": "xiaozhu2007",
+    "email": "im@932.moe"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiaozhu2007/koishi-plugin-zanwo.git"

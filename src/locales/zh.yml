@@ -2,9 +2,9 @@ commands:
   zanwo:
     description: 赞我
     usage: |-
-      直接输入即可触发点赞
+      直接输入即可点赞
     examples: |-
       zanwo
     messages:
-      success: 已完成名片赞操作，记得回哦
-      failure: 点赞失败
+      success: 已完成名片赞操作，记得回哦！
+      failure: 欸好像点赞失败惹
