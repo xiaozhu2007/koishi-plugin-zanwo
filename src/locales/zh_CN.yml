@@ -6,5 +6,15 @@ commands:
     examples: |-
       zanwo
     messages:
-      success: 已完成名片赞操作，记得回哦！
-      failure: 欸好像点赞失败惹
+      success: 已完成名片赞操作，记得回哦~
+      failure: 点赞失败惹
+  zan:
+    description: 为其他人点赞
+    usage: |-
+      命令后接需要点赞的人
+    examples: |-
+      zan @114514
+    messages:
+      success: 已对目标完成名片赞操作
+      failure: 无法对目标点赞
+      noarg: 缺少必要参数，请检查输入

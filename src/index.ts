@@ -7,8 +7,6 @@ export const usage = `
 
 **<center>本插件支持开箱即用</center>**
 
-常见的失败原因：用户禁止陌生人赞我、今日点赞已达上限次数或与服务器通讯出错
-
 本插件支持陌生人点赞 50 次 及 自定义成功失败语句，详情请见本地化
 `;
 
@@ -20,18 +18,37 @@ export const Config: Schema<Config> = Schema.object({})
 export function apply(ctx: Context) {
   ctx.i18n.define('zh-CN', require('./locales/zh_CN'))
 
-  ctx.command('zanwo').alias('赞我').action(async ({ session }) => {
-    let num = 0
-    try {
-      for (let i = 0; i < 5; i++) {
-        await session.bot.internal.sendLike(session.userId, 10);
-        num += 1
+  ctx.command('zanwo')
+    .alias('赞我')
+    .action(async ({ session }) => {
+      let num = 0
+      try {
+        for (let i = 0; i < 5; i++) {
+          await session.bot.internal.sendLike(session.userId, 10);
+          num += 1
+        }
+        return session.text('.success');
       }
-      return session.text('.success');
-    }
-    catch (_e) {
-      if (num > 0) return session.text('.success');
-      return session.text('.failure');
-    }
-  });
+      catch (_e) {
+        if (num > 0) return session.text('.success');
+        return session.text('.failure');
+      }
+    });
+
+  ctx.command('zan <who:user>')
+    .action(async ({ session }, who) => {
+      if (!who) return session.text('.noarg'); 
+      let num = 0
+      try {
+        for (let i = 0; i < 5; i++) {
+          await session.bot.internal.sendLike(who, 10);
+          num += 1
+        }
+        return session.text('.success');
+      }
+      catch (_e) {
+        if (num > 0) return session.text('.success');
+        return session.text('.failure');
+      }
+    });
 }
