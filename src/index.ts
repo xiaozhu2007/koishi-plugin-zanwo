@@ -18,7 +18,7 @@ export interface Config { }
 export const Config: Schema<Config> = Schema.object({})
 
 export function apply(ctx: Context) {
-  ctx.i18n.define('zh', require('./locales/zh'))
+  ctx.i18n.define('zh-CN', require('./locales/zh_CN'))
 
   ctx.command('zanwo').alias('赞我').action(async ({ session }) => {
     let num = 0
