@@ -1,4 +1,4 @@
-import { Context, h, Schema } from 'koishi'
+import { Context, Logger, Schema } from 'koishi'
 
 export const name = 'zanwo'
 
@@ -10,12 +10,24 @@ export const usage = `
 本插件支持陌生人点赞 50 次 及 自定义成功失败语句，详情请见本地化
 `;
 
+let globalConfig: Config
+let logger = new Logger(name)
 
-export interface Config { }
+export interface Config {
+  debug: boolean
+}
 
-export const Config: Schema<Config> = Schema.object({})
+export const Config: Schema<Config> = Schema.object({
+  debug: Schema
+    .boolean()
+    .description('是否开启调试模式')
+    .default(false)
+    .experimental()
+})
 
-export function apply(ctx: Context) {
+export function apply(ctx: Context, config: Config) {
+  let globalConfig = config
+
   ctx.i18n.define('zh-CN', require('./locales/zh_CN'))
 
   ctx.command('zanwo')
@@ -26,6 +38,7 @@ export function apply(ctx: Context) {
         for (let i = 0; i < 5; i++) {
           await session.bot.internal.sendLike(session.userId, 10);
           num += 1
+          if (globalConfig.debug) logger.debug(`为 ${session.userId} 点赞了 ${num} 轮`); // TODO: 优化调试逻辑
         }
         return session.text('.success');
       }
@@ -35,14 +48,19 @@ export function apply(ctx: Context) {
       }
     });
 
-  ctx.command('zan <who:user>')
+  ctx.command('zan <who:text>')
     .action(async ({ session }, who) => {
-      if (!who) return session.text('.noarg'); 
+      // 如果没有必要参数
+      if (!who) return session.text('.noarg');
+      // 使用正则匹配，这样写更简洁速度更快
+      let who_id = who.match(/\d+/)?.[0];
+      if (globalConfig.debug) logger.debug(`从 ${who} 匹配到 ${who_id}`); // TODO: 优化调试逻辑
       let num = 0
       try {
         for (let i = 0; i < 5; i++) {
-          await session.bot.internal.sendLike(who, 10);
+          await session.bot.internal.sendLike(who_id, 10);
           num += 1
+          if (globalConfig.debug) logger.debug(`为 ${who_id} 点赞了 ${num} 轮`); // TODO: 优化调试逻辑
         }
         return session.text('.success');
       }
