@@ -11,9 +11,10 @@ commands:
   zan:
     description: 为其他人点赞
     usage: |-
-      命令后接需要点赞的人
+      命令后接需要点赞的 QQ 号
     examples: |-
-      zan @114514
+      zan 114514
+      zan 1919810
     messages:
       success: 已对目标完成名片赞操作
       failure: 无法对目标点赞

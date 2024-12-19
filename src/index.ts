@@ -38,7 +38,7 @@ export function apply(ctx: Context, config: Config) {
         for (let i = 0; i < 5; i++) {
           await session.bot.internal.sendLike(session.userId, 10);
           num += 1
-          if (globalConfig.debug) logger.debug(`为 ${session.userId} 点赞了 ${num} 轮`); // TODO: 优化调试逻辑
+          if (globalConfig.debug) logger.info(`为 ${session.userId} 点赞了 ${num} 轮`);
         }
         return session.text('.success');
       }
@@ -51,21 +51,24 @@ export function apply(ctx: Context, config: Config) {
   ctx.command('zan <who:text>')
     .action(async ({ session }, who) => {
       // 如果没有必要参数
-      if (!who) return session.text('.noarg');
+      if (!who || who.trim() === '' || who.split(/\s+/).filter(Boolean).length > 1) return session.text('.noarg');
       // 使用正则匹配，这样写更简洁速度更快
-      let who_id = who.match(/\d+/)?.[0];
-      if (globalConfig.debug) logger.debug(`从 ${who} 匹配到 ${who_id}`); // TODO: 优化调试逻辑
+      let uid = who.match(/\d+/)?.[0];
+      // 没有匹配出 UID // TODO: 合并逻辑
+      if (!uid) return session.text('.noarg');
+      if (globalConfig.debug) logger.info(`从 ${who} 匹配到 ${uid}`);
       let num = 0
       try {
         for (let i = 0; i < 5; i++) {
-          await session.bot.internal.sendLike(who_id, 10);
+          await session.bot.internal.sendLike(uid, 10);
           num += 1
-          if (globalConfig.debug) logger.debug(`为 ${who_id} 点赞了 ${num} 轮`); // TODO: 优化调试逻辑
+          if (globalConfig.debug) logger.info(`为 ${uid} 点赞了 ${num} 轮`);
         }
         return session.text('.success');
       }
-      catch (_e) {
+      catch (e) {
         if (num > 0) return session.text('.success');
+        if (globalConfig.debug) logger.warn(`为 ${uid} 点赞失败：${e.message}`);
         return session.text('.failure');
       }
     });
