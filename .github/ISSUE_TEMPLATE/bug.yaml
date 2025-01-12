@@ -1,0 +1,53 @@
+name: Bug Report
+description: 为本插件提交错误报告
+title: "[Bug] "
+labels:
+  - Bug
+body:
+  - type: textarea
+    attributes:
+      label: 描述错误
+      description: 请简明地用几句话表述您遇到了什么问题
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 如何复现
+      description: 请描述一下如何复现这个错误
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 期望行为
+      description: 请描述您期望的插件行为
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 截图
+      description: 请尽量详细地提供相关截图，可以是聊天记录、Koishi 日志和 NapCat/LiteloaderQQNT 日志等。
+  - type: textarea
+    attributes:
+      label: Versions
+      description: 请填写相应的版本号
+      value: |
+        - 操作系统: <!-- e.g. Windows 10 -->
+        - 平台: <!-- e.g. Onebot -->
+        - 插件版本: <!-- e.g. 14.17.0 -->
+        - Koishi 版本: <!-- e.g. 3.0.0 -->
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 补充说明
+      description: 请描述其他想要补充的信息
+  - type: checkboxes
+    attributes:
+      label: 请勾选您认可的选项
+      options:
+        - label: 我开启了调试模式复现了问题并在上方提交了截图
+          required: true
+        - label: 该打码的我打码了
+        - label: 我 Star 了本仓库
+        - label: 我想要接收后续更新
+        - label: 我希望开发者能进群排查
